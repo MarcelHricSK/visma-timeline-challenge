@@ -48,9 +48,9 @@ networks:
         driver: bridge
 
 volumes:
-    vendor:
+    visma-vendor:
         driver: local
-    node_modules:
+    visma-node_modules:
         driver: local
-    db-data:
+    visma-db-data:
         driver: local
