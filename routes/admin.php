@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EventsController;
+use App\Http\Controllers\ProfilesController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
@@ -10,7 +11,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
             return view('admin.index');
         })->name('home');
         Route::resource('event', EventsController::class)->except(['show']);
-        Route::resource('profile', \App\Http\Controllers\ProfilesController::class)->except(['show']);
+        Route::resource('profile', ProfilesController::class)->except(['show']);
 
     });
 

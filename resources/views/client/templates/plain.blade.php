@@ -1,9 +1,5 @@
-@extends('admin.templates.base')
-
-@section('title', 'Login')
+@extends('client.templates.base')
 
 @section('content')
-<div class="content content--center">
     @yield('content')
-</div>
 @overwrite

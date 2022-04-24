@@ -17,18 +17,19 @@
             <th class="table__cell table__cell--head">
                 <div class="table__cell-content table__cell-content--head">Name</div>
             </th>
-            <th class="table__cell table__cell--head w-24">
+            <th class="table__cell table__cell--head w-12">
+                <div
+                    class="table__cell-content table__cell-content--head">Type
+                </div>
+            </th>
+            <th class="table__cell table__cell--head w-8">
                 <div
                     class="table__cell-content table__cell-content--head">Visibility
                 </div>
             </th>
             <th class="table__cell table__cell--head w-12">
                 <div
-                    class="table__cell-content table__cell-content--head align-right"></div>
-            </th>
-            <th class="table__cell table__cell--head w-12">
-                <div
-                    class="table__cell-content table__cell-content--head align-right"></div>
+                    class="table__cell-content table__cell-content--head align-right">Date </div>
             </th>
         </tr>
         </thead>
@@ -50,7 +51,10 @@
                 </td>
                 <td class="table__cell">
                     <a class="table__cell-content hover hover--underline"
-                       href="{{ route('admin.event.edit', ['event' => $event->id]) }}">{{ $event->name }}</div>
+                       href="{{ route('admin.event.edit', ['event' => $event->id]) }}">{{ $event->name }}</a>
+                </td>
+                <td class="table__cell">
+                    <div class="table__cell-content">{{ $event->type->name }}</div>
                 </td>
                 <td class="table__cell">
                     <div class="table__cell-content">
@@ -63,11 +67,7 @@
                 </td>
                 <td class="table__cell">
                     <div class="table__cell-content align-right">
-                    </div>
-                </td>
-                <td class="table__cell">
-                    <div class="table__cell-content align-right">
-                        {{ $event->created_at }}
+                        {{ $event->start_date->format('d.m.Y') }}
                     </div>
                 </td>
             </tr>

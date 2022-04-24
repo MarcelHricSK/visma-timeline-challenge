@@ -189,19 +189,31 @@ h1 {
   font-weight: 700;
   color: var(--color-secondary);
 }
-.heading--1 {
+.heading--1, .heading h1 {
   font-size: 2rem;
 }
-.heading--2 {
+.heading--2, .heading h2 {
   font-size: 1.5rem;
 }
-.heading--3 {
+.heading--3, .heading h3, .heading h4, .heading h5, .heading h6 {
   font-size: 1.25rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   color: var(--color-secondary);
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3, h4, h5, h6 {
+  font-size: 1.25rem;
 }
 
 .subheading {
@@ -221,12 +233,21 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 997;
   border-bottom: 2px solid var(--color-grey);
 }
+.header__logo {
+  cursor: pointer;
+}
 .header__wrapper {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+.header__links {
+  display: flex;
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+}
+
 table {
   border-spacing: 0;
   border-collapse: collapse;
@@ -413,10 +434,15 @@ table__img-wrapper {
   padding: 1rem 0;
   color: var(--color-dark);
   font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
 }
 .timeline__year--active {
   color: var(--color-black);
   font-size: 1.5rem;
+}
+.timeline__year:hover {
+  transform: scale(1.1);
 }
 .timeline__cards {
   display: grid;
@@ -424,6 +450,8 @@ table__img-wrapper {
   overflow-x: hidden;
   overflow-y: auto;
   grid-template-columns: 1fr 1fr;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 .timeline__cards > .left {
   margin-right: 25%;
@@ -431,6 +459,9 @@ table__img-wrapper {
 .timeline__cards > .right {
   margin-top: 10rem;
   margin-left: 25%;
+}
+.timeline__cards::-webkit-scrollbar {
+  display: none;
 }
 .timeline__card {
   padding: 2rem 4rem;
@@ -467,10 +498,15 @@ table__img-wrapper {
   flex-direction: column;
   align-items: center;
 }
+.event__image {
+  height: 20rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 .event__content {
   max-width: 75rem;
   width: 100%;
-  padding: 2rem 0;
+  padding: 2rem;
 }
 .event__split {
   display: grid;

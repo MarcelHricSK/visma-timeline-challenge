@@ -9,7 +9,7 @@ class Event extends Model
     protected $fillable = [
         'event_type_id',
         'name',
-        'name',
+        'slug',
         'description',
         'content',
         'visible',

@@ -9,7 +9,8 @@
         <div class="timeline">
             <ul class="timeline__years">
                 @for($i = $maxYear; $i >= $minYear; $i--)
-                    <li class="timeline__year{{ $i === $maxYear ? ' timeline__year--active' : null }}">{{ $i }}</li>
+                    <li class="timeline__year{{ $i === $maxYear ? ' timeline__year--active' : null }}"
+                        data-a-year="{{ $i }}">{{ $i }}</li>
 
                 @endfor
             </ul>
@@ -20,12 +21,13 @@
                         @if($i % 2 == 0)
                             <div class="timeline__card-wrapper">
                                 <div data-href="{{ route('client.event', ['event' => $event->slug]) }}"
-                                     class="timeline__card{{ $i % 2 ? ' timeline__card--alt' : null }}">
+                                     class="timeline__card{{ $i % 2 ? ' timeline__card--alt' : null }}"
+                                     data-year="{{ $event->start_date->format('Y') }}">
                                     <img class="timeline__img mb-2"
                                          src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80"
                                          alt="">
                                     <h2 class="timeline__heading heading heading--2">{{ $event->name }}</h2>
-                                    <span class="timeline__sub mb-2">{{ $event->type->name }}</span>
+                                    <span class="timeline__sub mb-2">{{$event->type->name }}, {{ $event->start_date->format('Y') }}{{ $event->location ? ', ' . $event->location : null }}</span>
                                     <p class="timeline__description mb-4">{{ $event->description }}</p>
                                     <a href="{{ route('client.event', ['event' => $event->slug]) }}" class="button">Read
                                         more</a>
@@ -40,15 +42,15 @@
                     <div class="timeline__separator"></div>
                     @foreach($events as $i => $event)
                         @if($i % 2 == 1)
-
                             <div class="timeline__card-wrapper">
                                 <div data-href="{{ route('client.event', ['event' => $event->slug]) }}"
-                                     class="timeline__card{{ $i % 2 ? ' timeline__card--alt' : null }}">
+                                     class="timeline__card{{ $i % 2 ? ' timeline__card--alt' : null }}"
+                                     data-year="{{ $event->start_date->format('Y') }}">
                                     <img class="timeline__img mb-2"
                                          src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80"
                                          alt="">
                                     <h2 class="timeline__heading heading heading--2">{{ $event->name }}</h2>
-                                    <span class="timeline__sub mb-2">{{ $event->type->name }}</span>
+                                    <span class="timeline__sub mb-2">{{ $event->type->name }}, {{ $event->start_date->format('Y') }}{{ $event->location ? ', ' . $event->location : null }}</span>
                                     <p class="timeline__description mb-4">{{ $event->description }}</p>
                                     <a href="{{ route('client.event', ['event' => $event->slug]) }}" class="button">Read
                                         more</a>
@@ -66,6 +68,33 @@
 
     </div>
     <script>
+        function getYearsInViewport() {
+            let activeYears = []
+            $('[data-year]').each((e, el) => {
+                console.log($(el).offset().top)
+                console.log($(el).attr('data-year'))
+                if ($(el).offset().top > 0 - ($(el).height() / 2) && $(el).offset().top < window.innerHeight + 100) {
+                    if (!activeYears.includes($(el).attr('data-year'))) {
+                        activeYears.push($(el).attr('data-year'))
 
+                    }
+                }
+            })
+
+            $('.timeline__year--active').removeClass('timeline__year--active')
+            for (let i = Math.min(...activeYears); i <= Math.max(...activeYears); i++) {
+                if (!$('[data-a-year=' + i + ']').hasClass('timeline__year--active')) {
+                    $('[data-a-year=' + i + ']').addClass('timeline__year--active')
+                }
+
+            }
+        }
+
+        getYearsInViewport()
+
+        $('.timeline__cards').scroll(getYearsInViewport)
+        $('.timeline__year').click(function () {
+            $('')
+        })
     </script>
 @endsection

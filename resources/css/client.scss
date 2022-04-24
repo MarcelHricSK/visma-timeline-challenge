@@ -59,15 +59,15 @@ body {
     font-weight: 700;
     color: var(--color-secondary);
 
-    &--1 {
+    &--1, h1 {
         font-size: 2rem;
     }
 
-    &--2 {
+    &--2, h2 {
         font-size: 1.5rem;
     }
 
-    &--3 {
+    &--3, h3, h4, h5, h6 {
         font-size: 1.25rem;
     }
 }
@@ -75,6 +75,18 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     color: var(--color-secondary);
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3, h4, h5, h6 {
+    font-size: 1.25rem;
 }
 
 .subheading {
@@ -94,6 +106,9 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 997;
     border-bottom: 2px solid var(--color-grey);
 
+    &__logo {
+        cursor: pointer;
+    }
     &__wrapper {
         width: 100%;
         display: flex;
@@ -101,7 +116,9 @@ h1, h2, h3, h4, h5, h6 {
         align-items: center;
     }
 
-    &__auth {
+    &__links {
+        display: flex;
+        column-gap: 2rem;
     }
 }
 
@@ -318,10 +335,16 @@ table {
         padding: 1rem 0;
         color: var(--color-dark);
         font-weight: 700;
+        cursor: pointer;
+        transition: 0.3s;
 
         &--active {
             color: var(--color-black);
             font-size: 1.5rem;
+        }
+
+        &:hover {
+            transform: scale(1.1);
         }
     }
 
@@ -331,6 +354,8 @@ table {
         overflow-x: hidden;
         overflow-y: auto;
         grid-template-columns: 1fr 1fr;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
 
         > .left {
             margin-right: 25%;
@@ -339,6 +364,10 @@ table {
         > .right {
             margin-top: 10rem;
             margin-left: 25%;
+        }
+
+        &::-webkit-scrollbar {
+            display: none;
         }
     }
 
@@ -386,10 +415,15 @@ table {
     flex-direction: column;
     align-items: center;
 
+    &__image {
+        height: 20rem;
+        object-fit: cover;
+    }
+
     &__content {
         max-width: 75rem;
         width: 100%;
-        padding: 2rem 0;
+        padding: 2rem;
     }
 
     &__split {

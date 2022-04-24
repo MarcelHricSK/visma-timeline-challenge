@@ -31,7 +31,8 @@
             </label>
             <label class="label mb-4" for="image__input">
                 <span class="label__text">File</span>
-                <input class="input" name="image" type="file" id="image__input" placeholder="Name">
+                <img src="{{ $event->cover_img ?: '' }}" alt="">
+                <input name="image" type="file" id="image__input" placeholder="Name">
             </label>
             <div class="split">
                 <label class="label mb-4" for="start_date__input">
@@ -74,17 +75,6 @@
             selector: '.editor',
             plugins: 'advlist autolink lists link image charmap preview anchor table',
             toolbar_mode: 'floating',
-            images_upload_url: 'admin.php',
-
-            /* we override default upload handler to simulate successful upload*/
-            images_upload_handler: function (blobInfo, success, failure) {
-                console.log(blobInfo)
-                success('http://moxiecode.cachefly.net/tinymce/v9/images/logo.png');
-
-                setTimeout(function () {
-                    /* no matter what you upload, we will turn it into TinyMCE logo :)*/
-                }, 2000);
-            },
         });
     </script>
 @endsection
