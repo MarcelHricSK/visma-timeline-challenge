@@ -299,6 +299,15 @@ body.pattern {
   border-radius: var(--border-radius);
   width: 100%;
 }
+.input::-moz-placeholder {
+  color: var(--color-grey);
+}
+.input:-ms-input-placeholder {
+  color: var(--color-grey);
+}
+.input::placeholder {
+  color: var(--color-grey);
+}
 .input--secondary {
   background: var(--color-accent);
 }

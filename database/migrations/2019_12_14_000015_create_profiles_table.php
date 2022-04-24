@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('role');
             $table->json('links');
             $table->timestamp('started_at');
+            $table->tinyInteger('visible')->unsigned()->default(0);
             $table->timestamps();
         });
     }

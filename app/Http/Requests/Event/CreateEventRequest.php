@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Event;
 
-class UpdateEventRequest extends \App\Http\Requests\AdminBaseRequest
+class CreateEventRequest extends \App\Http\Requests\AdminBaseRequest
 {
     public function rules()
     {

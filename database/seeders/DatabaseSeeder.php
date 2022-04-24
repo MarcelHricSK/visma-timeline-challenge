@@ -136,7 +136,10 @@ class DatabaseSeeder extends Seeder
         Profile::create([
             'first_name' => 'Pavel',
             'last_name' => 'Novák',
-            'links' => [],
+            'role' => 'Full-stack developer',
+            'links' => [
+                'github' => 'https://github.com/MarcelHricSK',
+            ],
             'started_at' => now()->subYears(5),
         ]);
     }

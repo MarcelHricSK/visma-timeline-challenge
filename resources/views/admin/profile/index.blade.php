@@ -51,8 +51,8 @@
                     </div>
                 </td>
                 <td class="table__cell">
-                    <div class="table__cell-content hover hover--underline"
-                       href="{{ route('admin.event.edit', ['event' => $event->id]) }}">{{ $profile->name }}</div>
+                    <a class="table__cell-content hover hover--underline"
+                       href="{{ route('admin.profile.edit', ['profile' => $profile->id]) }}">{{ $profile->first_name . ' ' . $profile->last_name }}</a>
                 </td>
                 <td class="table__cell">
                     <div class="table__cell-content">
@@ -64,12 +64,8 @@
                     </div>
                 </td>
                 <td class="table__cell">
-                    <div class="table__cell-content align-right">
-                    </div>
-                </td>
-                <td class="table__cell">
-                    <div class="table__cell-content align-right">
-                        {{ $profile->started_at }}
+                    <div class="table__cell-content ">
+                        {{ $profile->started_at->format('d.m.Y') }}
                     </div>
                 </td>
             </tr>

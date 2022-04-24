@@ -6,76 +6,49 @@
 
 @section('content')
     <div class="content">
-        <div class="timeline">
-            <ul class="timeline__years">
-                @for($i = $maxYear; $i >= $minYear; $i--)
-                    <li class="timeline__year{{ $i === $maxYear ? ' timeline__year--active' : null }}"
-                        data-a-year="{{ $i }}">{{ $i }}</li>
-
-                @endfor
-            </ul>
-            <div class="timeline__cards">
-                <div class="left">
-                    <div class="timeline__separator timeline__separator--rev"></div>
-
-                </div>
-                <div class="right">
-                    <div class="timeline__separator"></div>
-                    @foreach($events as $i => $event)
-                        @if($i % 2 == 1)
-                            <div class="timeline__card-wrapper">
-                                <div data-href="{{ route('client.event', ['event' => $event->slug]) }}"
-                                     class="timeline__card{{ $i % 2 ? ' timeline__card--alt' : null }}"
-                                     data-year="{{ $event->start_date->format('Y') }}">
-                                    <img class="timeline__img mb-2"
-                                         src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80"
-                                         alt="">
-                                    <h2 class="timeline__heading heading heading--2">{{ $event->name }}</h2>
-                                    <span class="timeline__sub mb-2">{{ $event->type->name }}, {{ $event->start_date->format('Y') }}</span>
-                                    <p class="timeline__description mb-4">{{ $event->description }}</p>
-                                    <a href="{{ route('client.event', ['event' => $event->slug]) }}" class="button">Read
-                                        more</a>
-                                </div>
+        <div class="tv">
+            @foreach($events as $i => $event)
+                <div class="tv__slide{{ $i == 0 ? ' tv__slide--active' : null }}">
+                    <div class="tv__card-wrapper">
+                        <div data-href="{{ route('client.event', ['event' => $event->slug]) }}"
+                             class="tv__card{{ $i % 2 ? ' timeline__card--alt' : null }}"
+                             data-year="{{ $event->start_date->format('Y') }}">
+                            <img class="tv__img mb-2"
+                                 src="{{ $event->cover_image ?: asset('img/bg.png') }}"
+                                 alt="">
+                            <div class="tv__card-content">
+                                <img class="tv__qr mb-8"
+                                     src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=5"
+                                     alt="">
+                                <h2 class="tv__heading heading heading--2">{{ $event->name }}</h2>
+                                <span
+                                    class="tv__sub mb-8">{{ $event->type->name }}, {{ $event->start_date->format('Y') }}</span>
+                                <p class="tv__description mb-4">{{ $event->description }}</p>
                             </div>
-
-                            <div class="timeline__separator"></div>
-                        @endif
-
-                    @endforeach
+                        </div>
+                    </div>
                 </div>
-
-            </div>
+            @endforeach
         </div>
+        <div class="line"></div>
+    </div>
 
     </div>
     <script>
-        function getYearsInViewport() {
-            let activeYears = []
-            $('[data-year]').each((e, el) => {
-                console.log($(el).offset().top)
-                console.log($(el).attr('data-year'))
-                if ($(el).offset().top > 0 - ($(el).height() / 2) && $(el).offset().top < window.innerHeight + 100) {
-                    if (!activeYears.includes($(el).attr('data-year'))) {
-                        activeYears.push($(el).attr('data-year'))
+        let slide = 0;
+        const slidesCount = {{ $events->count() }};
 
-                    }
-                }
-            })
-
-            $('.timeline__year--active').removeClass('timeline__year--active')
-            for (let i = Math.min(...activeYears); i <= Math.max(...activeYears); i++) {
-                if (!$('[data-a-year=' + i + ']').hasClass('timeline__year--active')) {
-                    $('[data-a-year=' + i + ']').addClass('timeline__year--active')
-                }
-
-            }
+        function setSlide(index) {
+            $('.tv__slide').removeClass('tv__slide--active')
+            $('.tv__slide:nth-of-type(' + index + ')').addClass('tv__slide--active')
         }
 
-        getYearsInViewport()
-
-        $('.timeline__cards').scroll(getYearsInViewport)
-        $('.timeline__year').click(function () {
-            $('')
-        })
+        setInterval(function () {
+            if (slide >= slidesCount) {
+                slide = 0
+            }
+            setSlide(slide + 1)
+            slide++
+        }, 10000)
     </script>
 @endsection

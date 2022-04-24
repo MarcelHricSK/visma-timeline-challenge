@@ -8,7 +8,7 @@
     <div class="content">
         <div class="event">
             <img class="event__image"
-                 src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80"
+                 src="{{ $event->cover_image ?: asset('img/bg.png') }}"
                  alt="">
             <div class="event__content">
                 <h1 class="heading heading--1">{{ $event->name }}</h1>

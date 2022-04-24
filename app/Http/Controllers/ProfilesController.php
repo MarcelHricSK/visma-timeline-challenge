@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Event\UpdateEventRequest;
+use App\Http\Requests\Profile\CreateProfileRequest;
+use App\Http\Requests\Profile\UpdateProfileRequest;
 use App\Models\Event;
 use App\Models\EventType;
 use App\Models\Profile;
@@ -20,21 +22,35 @@ class ProfilesController {
     }
 
     public function edit(Request $request, $id) {
-        $event = Profile::find($id);
+        $profile = Profile::findOrFail($id);
         $types = EventType::all();
-        return view('admin.profile.edit', compact('event', 'types'));
+        return view('admin.profile.edit', compact('profile', 'types'));
     }
 
-    public function update(UpdateEventRequest $request, $id) {
-        $event = Event::find($id);
-        $event->update([
-            'event_type_id' => $request->post('type'),
-            'name' => $request->post('name'),
-            'slug' => $request->post('slug'),
-            'description' => $request->post('description'),
+    public function update(UpdateProfileRequest $request, $id) {
+        $profile = Profile::findOrFail($id);
+        $profile->update([
+            'first_name' => $request->post('first_name'),
+            'last_name' => $request->post('last_name'),
+            'role' => $request->post('role'),
+            'started_at' => $request->post('started_at'),
+            'links' => [],
             'visible' => $request->post('visible') === 'on' ? 1 : 0,
             'content' => $request->post('content'),
         ]);
         return redirect(route('admin.profile.edit', ['profile' => $id]));
+    }
+
+    public function store(CreateProfileRequest $request) {
+        Profile::create([
+            'first_name' => $request->post('first_name'),
+            'last_name' => $request->post('last_name'),
+            'role' => $request->post('role'),
+            'started_at' => $request->post('started_at'),
+            'links' => [],
+            'visible' => $request->post('visible') === 'on' ? 1 : 0,
+            'content' => $request->post('content'),
+        ]);
+        return redirect(route('admin.profile.index'));
     }
 }

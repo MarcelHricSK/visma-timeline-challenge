@@ -30,9 +30,9 @@
                 </select>
             </label>
             <label class="label mb-4" for="image__input">
-                <span class="label__text">File</span>
-                <img src="{{ $event->cover_img ?: '' }}" alt="">
-                <input name="image" type="file" id="image__input" placeholder="Name">
+                <span class="label__text">Image</span>
+                <img src="{{ $event->cover_image ?: '' }}" alt="">
+                <input class="input" name="image" type="text" id="image__input" placeholder="Image" value="{{ $event->cover_image ?: '' }}">
             </label>
             <div class="split">
                 <label class="label mb-4" for="start_date__input">

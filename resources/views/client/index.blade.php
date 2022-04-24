@@ -24,7 +24,7 @@
                                      class="timeline__card{{ $i % 2 ? ' timeline__card--alt' : null }}"
                                      data-year="{{ $event->start_date->format('Y') }}">
                                     <img class="timeline__img mb-2"
-                                         src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80"
+                                         src="{{ $event->cover_image ?: asset('img/bg.png') }}"
                                          alt="">
                                     <h2 class="timeline__heading heading heading--2">{{ $event->name }}</h2>
                                     <span class="timeline__sub mb-2">{{$event->type->name }}, {{ $event->start_date->format('Y') }}{{ $event->location ? ', ' . $event->location : null }}</span>
@@ -47,7 +47,7 @@
                                      class="timeline__card{{ $i % 2 ? ' timeline__card--alt' : null }}"
                                      data-year="{{ $event->start_date->format('Y') }}">
                                     <img class="timeline__img mb-2"
-                                         src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80"
+                                         src="{{ $event->cover_image ?: asset('img/bg.png') }}"
                                          alt="">
                                     <h2 class="timeline__heading heading heading--2">{{ $event->name }}</h2>
                                     <span class="timeline__sub mb-2">{{ $event->type->name }}, {{ $event->start_date->format('Y') }}{{ $event->location ? ', ' . $event->location : null }}</span>
@@ -71,12 +71,9 @@
         function getYearsInViewport() {
             let activeYears = []
             $('[data-year]').each((e, el) => {
-                console.log($(el).offset().top)
-                console.log($(el).attr('data-year'))
                 if ($(el).offset().top > 0 - ($(el).height() / 2) && $(el).offset().top < window.innerHeight + 100) {
                     if (!activeYears.includes($(el).attr('data-year'))) {
                         activeYears.push($(el).attr('data-year'))
-
                     }
                 }
             })
@@ -93,8 +90,10 @@
         getYearsInViewport()
 
         $('.timeline__cards').scroll(getYearsInViewport)
-        $('.timeline__year').click(function () {
-            $('')
+        $('.timeline__year').click(function (e) {
+            $('.timeline__cards').animate({
+                scrollTop: $('[data-a-year=' + $(e.target).attr('data-year') + ']').offset().top
+            }, 500);
         })
     </script>
 @endsection

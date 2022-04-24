@@ -11,6 +11,7 @@ class Event extends Model
         'name',
         'slug',
         'description',
+        'cover_image',
         'content',
         'visible',
         'location',
