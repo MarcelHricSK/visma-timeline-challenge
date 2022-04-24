@@ -639,4 +639,8 @@ table__img-wrapper {
   .timeline__separator {
     display: none;
   }
+
+  .event__content {
+    overflow-x: auto;
+  }
 }
