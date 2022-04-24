@@ -15,11 +15,11 @@ RUN apt update \
             pdo_mysql \
             mysqli
 
-WORKDIR /var/www/laravel-app
+WORKDIR /var/www/hk-2022
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-COPY . /var/www/laravel-app
+COPY . /var/www/hk-2022
 
 RUN composer install --no-progress --optimize-autoloader
 
