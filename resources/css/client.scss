@@ -109,6 +109,7 @@ h3, h4, h5, h6 {
     &__logo {
         cursor: pointer;
     }
+
     &__wrapper {
         width: 100%;
         display: flex;
@@ -366,11 +367,15 @@ table {
             margin-left: 25%;
         }
 
+        > .mobile {
+            display: none;
+            flex-direction: column;
+        }
+
         &::-webkit-scrollbar {
             display: none;
         }
     }
-
 
 
     &__card {
@@ -471,7 +476,7 @@ table {
     &__card {
         display: grid;
         grid-template-columns: 2fr 3fr;
-        column-gap: 2rem;
+        column-gap: 3rem;
 
         &-content {
             display: flex;
@@ -515,6 +520,7 @@ table {
         display: flex;
         flex-direction: column;
     }
+
     > strong {
         color: var(--color-secondary);
     }
@@ -526,5 +532,39 @@ table {
     }
     100% {
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .header {
+        &__wrapper {
+            justify-content: center;
+        }
+
+        &__links {
+            display: none;
+        }
+    }
+
+    .timeline {
+        &__cards {
+            grid-template-columns: 1fr;
+        }
+
+        &__years {
+            display: none;
+        }
+
+        .left, .right {
+            display: none;
+        }
+
+        .mobile {
+            display: flex;
+        }
+
+        &__separator {
+            display: none;
+        }
     }
 }

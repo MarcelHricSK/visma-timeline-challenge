@@ -27,13 +27,13 @@
                                          src="{{ $event->cover_image ?: asset('img/bg.png') }}"
                                          alt="">
                                     <h2 class="timeline__heading heading heading--2">{{ $event->name }}</h2>
-                                    <span class="timeline__sub mb-2">{{$event->type->name }}, {{ $event->start_date->format('Y') }}{{ $event->location ? ', ' . $event->location : null }}</span>
+                                    <span
+                                        class="timeline__sub mb-2">{{$event->type->name }}, {{ $event->start_date->format('Y') }}{{ $event->location ? ', ' . $event->location : null }}</span>
                                     <p class="timeline__description mb-4">{{ $event->description }}</p>
                                     <a href="{{ route('client.event', ['event' => $event->slug]) }}" class="button">Read
                                         more</a>
                                 </div>
                             </div>
-
                             <div class="timeline__separator timeline__separator--rev"></div>
                         @endif
                     @endforeach
@@ -50,19 +50,36 @@
                                          src="{{ $event->cover_image ?: asset('img/bg.png') }}"
                                          alt="">
                                     <h2 class="timeline__heading heading heading--2">{{ $event->name }}</h2>
-                                    <span class="timeline__sub mb-2">{{ $event->type->name }}, {{ $event->start_date->format('Y') }}{{ $event->location ? ', ' . $event->location : null }}</span>
+                                    <span
+                                        class="timeline__sub mb-2">{{ $event->type->name }}, {{ $event->start_date->format('Y') }}{{ $event->location ? ', ' . $event->location : null }}</span>
                                     <p class="timeline__description mb-4">{{ $event->description }}</p>
                                     <a href="{{ route('client.event', ['event' => $event->slug]) }}" class="button">Read
                                         more</a>
                                 </div>
                             </div>
-
                             <div class="timeline__separator"></div>
                         @endif
-
                     @endforeach
                 </div>
-
+                <div class="mobile">
+                    <div class="timeline__separator timeline__separator--rev"></div>
+                    @foreach($events as $i => $event)
+                        <div class="timeline__card-wrapper">
+                            <div class="timeline__card">
+                                <img class="timeline__img mb-2"
+                                     src="{{ $event->cover_image ?: asset('img/bg.png') }}"
+                                     alt="">
+                                <h2 class="timeline__heading heading heading--2">{{ $event->name }}</h2>
+                                <span
+                                    class="timeline__sub mb-2">{{$event->type->name }}, {{ $event->start_date->format('Y') }}{{ $event->location ? ', ' . $event->location : null }}</span>
+                                <p class="timeline__description mb-4">{{ $event->description }}</p>
+                                <a href="{{ route('client.event', ['event' => $event->slug]) }}" class="button">Read
+                                    more</a>
+                            </div>
+                        </div>
+                        <div class="timeline__separator timeline__separator--rev"></div>
+                    @endforeach
+                </div>
             </div>
         </div>
 
