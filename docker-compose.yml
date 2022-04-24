@@ -8,8 +8,8 @@ services:
             dockerfile: ./docker/php/Dockerfile
         volumes:
             - ./:/var/www/hk-2022/
-            - vendor:/var/www/hk-2022/vendor/
-            - node_modules:/var/www/hk-2022/node_modules/
+            - visma-vendor:/var/www/hk-2022/vendor/
+            - visma-node_modules:/var/www/hk-2022/node_modules/
         networks:
             - default
     webserver:
@@ -19,8 +19,8 @@ services:
         tty: true
         volumes:
             - ./:/var/www/hk-2022/
-            - vendor:/var/www/hk-2022/vendor/
-            - node_modules:/var/www/hk-2022/node_modules/
+            - visma-vendor:/var/www/hk-2022/vendor/
+            - visma-node_modules:/var/www/hk-2022/node_modules/
             - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
         ports:
             - '80:80'
@@ -34,7 +34,7 @@ services:
         restart: unless-stopped
         tty: true
         volumes:
-            - db-data:/var/lib/mysql/
+            - visma-db-data:/var/lib/mysql/
         environment:
             MYSQL_USER: app
             MYSQL_PASSWORD: 1234
