@@ -35,7 +35,7 @@
 
     </div>
     <script>
-        let slide = 0;
+        let slide = 1;
         const slidesCount = {{ $events->count() }};
 
         function setSlide(index) {
