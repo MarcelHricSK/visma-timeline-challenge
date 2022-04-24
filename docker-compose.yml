@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
     app:
-        container_name: app
+        container_name: visma-app
         build:
             context: .
             dockerfile: ./docker/php/Dockerfile
@@ -14,7 +14,7 @@ services:
             - default
     webserver:
         image: nginx:latest
-        container_name: webserver
+        container_name: visma-webserver
         restart: unless-stopped
         tty: true
         volumes:
@@ -30,7 +30,7 @@ services:
             - default
     mysql-db:
         image: mysql:8.0.28
-        container_name: mysql-db
+        container_name: visma-mysql-db
         restart: unless-stopped
         tty: true
         volumes:
