@@ -26,11 +26,11 @@ class CreateEventRequest extends \App\Http\Requests\AdminBaseRequest
                 'string',
             ],
             'description' => [
-                'required',
+                'nullable',
                 'string',
             ],
             'content' => [
-                'required',
+                'nullable',
                 'string',
             ],
             'location' => [

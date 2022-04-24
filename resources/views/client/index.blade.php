@@ -92,7 +92,7 @@
         $('.timeline__cards').scroll(getYearsInViewport)
         $('.timeline__year').click(function (e) {
             $('.timeline__cards').animate({
-                scrollTop: $('[data-a-year=' + $(e.target).attr('data-year') + ']').offset().top
+                scrollTop: $('[data-year=' + $(e.target).attr('data-a-year') + ']').offset().top
             }, 500);
         })
     </script>

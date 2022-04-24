@@ -18,7 +18,7 @@
                                  alt="">
                             <div class="tv__card-content">
                                 <img class="tv__qr mb-8"
-                                     src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=5"
+                                     src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={{ route('client.event', ['event' => $event->slug]) }}"
                                      alt="">
                                 <h2 class="tv__heading heading heading--2">{{ $event->name }}</h2>
                                 <span
@@ -50,5 +50,11 @@
             setSlide(slide + 1)
             slide++
         }, 10000)
+
+        $(window).on('keydown', function (e) {
+            if (e.key == 'Escape') {
+                window.location = '/'
+            }
+        })
     </script>
 @endsection

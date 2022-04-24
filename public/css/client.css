@@ -574,6 +574,27 @@ table__img-wrapper {
           animation: 10s infinite line linear;
 }
 
+.profile {
+  background: var(--color-grey);
+  padding: 2rem;
+  display: flex;
+  border-radius: var(--border-radius);
+  align-items: center;
+}
+.profile__image {
+  display: block;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+}
+.profile__content {
+  display: flex;
+  flex-direction: column;
+}
+.profile > strong {
+  color: var(--color-secondary);
+}
+
 @-webkit-keyframes line {
   0% {
     width: 0;

@@ -29,7 +29,7 @@ class CreateProfileRequest extends AdminBaseRequest
             ],
             'visible' => [
                 'nullable',
-                'string'
+                'string',
             ],
         ];
     }

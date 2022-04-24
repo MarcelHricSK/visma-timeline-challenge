@@ -13,11 +13,11 @@
     <table class="table mb-2">
         <thead class="table__head">
         <tr class="table__row table__row--head">
-            <th class="table__cell table__cell--head align-center w-4"></th>
+            <th class="table__cell table__cell--head align-center w-2"></th>
             <th class="table__cell table__cell--head">
                 <div class="table__cell-content table__cell-content--head">Name</div>
             </th>
-            <th class="table__cell table__cell--head w-24">
+            <th class="table__cell table__cell--head w-12">
                 <div
                     class="table__cell-content table__cell-content--head">Visibility
                 </div>
@@ -25,12 +25,6 @@
             <th class="table__cell table__cell--head w-12">
                 <div
                     class="table__cell-content table__cell-content--head align-right">Started at</div>
-            </th>
-            <th class="table__cell table__cell--head w-12">
-                <div
-                    class="table__cell-content table__cell-content--head align-right">
-
-                </div>
             </th>
         </tr>
         </thead>
