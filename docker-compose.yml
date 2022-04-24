@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+    app:
+        container_name: app
+        build:
+            context: .
+            dockerfile: ./docker/php/Dockerfile
+        volumes:
+            - ./:/var/www/hk-2022/
+            - vendor:/var/www/hk-2022/vendor/
+            - node_modules:/var/www/hk-2022/node_modules/
+        networks:
+            - default
+    webserver:
+        image: nginx:latest
+        container_name: webserver
+        restart: unless-stopped
+        tty: true
+        volumes:
+            - ./:/var/www/hk-2022/
+            - vendor:/var/www/hk-2022/vendor/
+            - node_modules:/var/www/hk-2022/node_modules/
+            - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+        ports:
+            - '80:80'
+            - '8000:80'
+            - '443:443'
+        networks:
+            - default
+    mysql-db:
+        image: mysql:8.0.28
+        container_name: mysql-db
+        restart: unless-stopped
+        tty: true
+        volumes:
+            - db-data:/var/lib/mysql/
+        environment:
+            MYSQL_USER: app
+            MYSQL_PASSWORD: 1234
+            MYSQL_ROOT_PASSWORD: 1234
+            MYSQL_DATABASE: hk
+        networks:
+            - default
+
+networks:
+    default:
+        driver: bridge
+
+volumes:
+    vendor:
+        driver: local
+    node_modules:
+        driver: local
+    db-data:
+        driver: local

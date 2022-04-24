@@ -1,0 +1,76 @@
+$spacing: (1, 2, 3, 4, 8, 16);
+$sizing: (1, 2, 3, 4, 8, 10, 12, 16, 20);
+
+img {
+    vertical-align: middle;
+    width: 100%;
+}
+
+a,
+span,
+p,
+div,
+strong,
+em,
+button {
+    font-size: 1rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+.mb {
+    @each $s in $spacing {
+        &-#{$s} {
+            margin-bottom: #{$s / 4}rem;
+        }
+    }
+}
+
+.mt {
+    @each $s in $spacing {
+        &-#{$s} {
+            margin-top: #{$s / 4}rem;
+        }
+    }
+}
+
+.ml {
+    @each $s in $spacing {
+        &-#{$s} {
+            margin-left: #{$s / 4}rem;
+        }
+    }
+}
+
+.mr {
+    @each $s in $spacing {
+        &-#{$s} {
+            margin-right: #{$s / 4}rem;
+        }
+    }
+}
+
+.w {
+    @each $s in $sizing {
+        &-#{$s} {
+            width: #{$s}rem;
+        }
+    }
+}
+
+.pseudo {
+    opacity: 0;
+}
+
+.split {
+    display: grid;
+    column-gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+
+}
