@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
     app:
@@ -23,7 +23,8 @@ services:
             - visma-node_modules:/var/www/hk-2022/node_modules/
             - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
         ports:
-            - '80:80'   
+            - "80:8080"
+            - "8080:8080"
         networks:
             - default
     mysql-db:
