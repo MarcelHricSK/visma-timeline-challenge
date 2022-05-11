@@ -8,6 +8,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}" sizes="96x96">
     <script src="https://cdn.tiny.cloud/1/yqgc71vzdboo9xg6kwcct3l3mn0677x4xslh5ei0zw6ebsvz/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
     <title>@yield('title')</title>
 </head>
 @if(View::hasSection('has_menu'))
@@ -19,4 +23,5 @@
     @yield('content')
     </body>
 @endif
+@yield('scripts_body')
 </html>

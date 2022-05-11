@@ -1,6 +1,6 @@
 @extends('admin.templates.default')
 
-@section('title', format_title_admin('Edit events'))
+@section('title', format_title_admin('Edit profile'))
 
 @section('content')
     <div class="heading-section mb-4">

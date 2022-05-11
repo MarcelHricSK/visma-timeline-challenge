@@ -1,3 +1,133 @@
+.detail-card {
+    &__title {
+        //
+    }
+
+    &__body {
+        background-color: var(--color-white);
+        padding: 2rem;
+        border-radius: var(--border-radius);
+    }
+
+    &__text-wrapper {
+        //
+    }
+
+    &__text, &__text-content {
+        font-weight: 700;
+    }
+}
+
+.drop-zone {
+    width: 100%;
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    padding: 0.5rem;
+    transition: 0.3s;
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 6rem 2rem;
+        border: 2px dashed var(--color-accent);
+        border-radius: var(--border-radius);
+    }
+
+    &__ico {
+        width: 8rem;
+        margin-bottom: 2rem;
+    }
+
+    &__text {
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+    }
+
+    &__separator {
+        font-size: 0.75rem;
+        margin-bottom: 1rem;
+        color: var(--color-grey-light);
+    }
+}
+
+.media {
+    &__wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
+        justify-content: space-between;
+        width: 100%;
+        column-gap: 2rem;
+        row-gap: 2rem;
+    }
+}
+
+.medium {
+    position: relative;
+    overflow: hidden;
+    height: 0;
+    padding-bottom: 100%;
+    border-radius: var(--border-radius);
+
+    &__overlay {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        pointer-events: none;
+        opacity: 0;
+        transition: 0.3s;
+        background: rgba(var(--color-primary-rgb), 0.5);
+        z-index: 99;
+    }
+
+    &__button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 3rem;
+        height: 3rem;
+        background: var(--color-primary);
+        border-radius: var(--border-radius);
+    }
+
+    &__item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+    &:hover {
+        .medium__overlay {
+            pointer-events: all;
+            opacity: 1;
+        }
+    }
+}
+
+.image-view {
+    display: flex;
+    justify-content: center;
+    background: var(--color-white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    width: 100%;
+
+    &__img {
+        min-height: 8rem;
+        max-width: 100%;
+        border-radius: var(--border-radius);
+    }
+}
+
 .hover {
     &--underline {
         &:hover {
@@ -5,3 +135,4 @@
         }
     }
 }
+

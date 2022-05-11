@@ -185,6 +185,15 @@ h1 {
   grid-template-columns: 1fr 1fr;
 }
 
+.content-divide {
+  display: grid;
+  grid-template-columns: 65% 1fr;
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .heading {
   font-weight: 700;
   color: var(--color-secondary);
@@ -246,6 +255,9 @@ h3, h4, h5, h6 {
   display: flex;
   -moz-column-gap: 2rem;
        column-gap: 2rem;
+}
+.header__links > a {
+  color: var(--color-black);
 }
 
 table {
@@ -511,6 +523,9 @@ table__img-wrapper {
   max-width: 75rem;
   width: 100%;
   padding: 2rem;
+}
+.event__content img {
+  height: auto;
 }
 .event__split {
   display: grid;

@@ -8,10 +8,12 @@
     <div class="content">
         <div class="timeline">
             <ul class="timeline__years">
+                <form action="{{ route('client.index') }}">
+                    <input class="input" type="text" name="search" id="search__input" placeholder="Search..." value="{{ request()->input('search') }}">
+                </form>
                 @for($i = $maxYear; $i >= $minYear; $i--)
                     <li class="timeline__year{{ $i === $maxYear ? ' timeline__year--active' : null }}"
                         data-a-year="{{ $i }}">{{ $i }}</li>
-
                 @endfor
             </ul>
             <div class="timeline__cards">

@@ -27,7 +27,28 @@
                     </li>
                 </ul>
             </li>
-            <li class="menu__group mb-1">
+            <li class="menu__group mb-4">
+                <span class="menu__group-title">Assets</span>
+                <ul>
+                    <li class="menu__item has-children{{ request()->is('admin/media*') ? ' menu__item--active' : '' }}">
+                        <a class="menu__item-span"
+                           href="{{ route('admin.media.index') }}">Media</a>
+                        <ul class="menu__children">
+                            <li
+                                class="menu__item menu__item--child{{ request()->is('admin/media') ? ' menu__item--active' : '' }}">
+                                <a class="menu__item-link"
+                                   href="{{ route('admin.media.index') }}">All media files</a>
+                            </li>
+                            <li
+                                class="menu__item menu__item--child{{ request()->is('admin/media/create') ? ' menu__item--active' : '' }}">
+                                <a class="menu__item-link"
+                                   href="{{ route('admin.media.create') }}">Add media files</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu__group mb-4">
                 <span class="menu__group-title">Management</span>
                 <ul>
                     <li class="menu__item has-children{{ request()->is('admin/event*') ? ' menu__item--active' : '' }}">
@@ -59,6 +80,27 @@
                                 class="menu__item menu__item--child{{ request()->is('admin/profile/create') ? ' menu__item--active' : '' }}">
                                 <a class="menu__item-link"
                                    href="{{ route('admin.profile.create') }}">Create profile</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu__group mb-4">
+                <span class="menu__group-title">Tools</span>
+                <ul>
+                    <li class="menu__item has-children{{ request()->is('admin/administrator*') ? ' menu__item--active' : '' }}">
+                        <a class="menu__item-span"
+                           href="{{ route('admin.administrator.index') }}">Administrators</a>
+                        <ul class="menu__children">
+                            <li
+                                class="menu__item menu__item--child{{ request()->is('admin/administrator') ? ' menu__item--active' : '' }}">
+                                <a class="menu__item-link"
+                                   href="{{ route('admin.administrator.index') }}">All administrators</a>
+                            </li>
+                            <li
+                                class="menu__item menu__item--child{{ request()->is('admin/administrator/create') ? ' menu__item--active' : '' }}">
+                                <a class="menu__item-link"
+                                   href="{{ route('admin.administrator.create') }}">Create administrator</a>
                             </li>
                         </ul>
                     </li>
