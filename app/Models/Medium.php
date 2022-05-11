@@ -11,5 +11,7 @@ class Medium extends Model
     protected $fillable = [
         'url',
         'type',
+        'title',
+        'description',
     ];
 }

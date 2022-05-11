@@ -31,6 +31,7 @@ class MediaController {
             'title' => $request->post('title'),
             'description' => $request->post('description'),
         ]);
+        return redirect(route('admin.media.edit', ['medium' => $id]));
     }
 
     public function store(Request $request) {
