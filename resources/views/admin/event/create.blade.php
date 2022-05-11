@@ -29,8 +29,8 @@
                 </select>
             </label>
             <label class="label mb-4" for="image__input">
-                <span class="label__text">File</span>
-                <input name="image" type="file" id="image__input" placeholder="Name">
+                <span class="label__text">Image</span>
+                <input class="input" name="image" type="text" id="image__input" placeholder="Image">
             </label>
             <div class="split">
                 <label class="label mb-4" for="start_date__input">

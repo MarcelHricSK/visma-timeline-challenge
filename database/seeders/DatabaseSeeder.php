@@ -112,10 +112,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Event::create([
-            'name' => 'Test 2',
+            'name' => 'Test',
             'slug' => 'test-4',
             'event_type_id' => 1,
             'description' => 'Short desc 123.',
+            'cover_image' => 'https://images.pexels.com/photos/11431628/pexels-photo-11431628.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
             'content' => null,
             'data' => null,
             'start_date' => now()->subYear(),
